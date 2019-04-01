@@ -1,5 +1,4 @@
-# CommonUI
-Android公共/基础组件库-Android common/base component library. 
+# CommonUI - Android公共/基础组件库-Android common/base component library. 
 [ ![Download](https://api.bintray.com/packages/resetmyself/holdon/commonui/images/download.svg?version=1.0.0) ](https://bintray.com/resetmyself/holdon/commonui/1.0.0/link) 
 
 （Android常用控件封装整理集合）.  
