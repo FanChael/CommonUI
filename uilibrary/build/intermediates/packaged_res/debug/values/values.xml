@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="black_a">#515055</color>
+    <color name="blue_a">#f0008DCF</color>
+    <color name="blue_b">#009BFB</color>
+    <color name="deep_gray">#777777</color>
+    <color name="gray">#9e9e9e</color>
+    <color name="line_gray_a">#e4e4e4</color>
+    <color name="line_gray_b">#f6f6f6</color>
+    <color name="translucent_a">#60000000</color>
+    <color name="translucent_all">#00000000</color>
+    <color name="translucent_b">#80000000</color>
+    <color name="translucent_c">#9e9e9e9e</color>
+    <color name="white">#ffffff</color>
+    <declare-styleable name="common_styleable"><attr format="dimension" name="s_corner_radius"/><attr format="string" name="s_paddings"/><attr format="color" name="s_bg_color"/><attr format="dimension" name="s_stroke_w"/><attr format="color" name="s_stroke_color"/></declare-styleable>
+    <string name="app_name">uilibrary</string>
+</resources>

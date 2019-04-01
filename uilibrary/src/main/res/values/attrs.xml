@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="common_styleable">
+        <!--声明我们的属性，名称为radius,取值类型为尺寸类型（dp,px等）-->
+        <attr name="s_corner_radius" format="dimension"></attr>
+        <!--声明我们的属性，名称为paddings, 分别为"l,t,r,b"的px值-->
+        <attr name="s_paddings" format="string"></attr>
+        <attr name="s_bg_color" format="color"></attr>
+        <attr name="s_stroke_w" format="dimension"></attr>
+        <attr name="s_stroke_color" format="color"></attr>
+    </declare-styleable>
+</resources>
