@@ -1,7 +1,7 @@
-# CommonUI - Android公共/基础组件库-Android common/base component library. 
+# CommonUI - Android公共/基础组件库
 [ ![Download](https://api.bintray.com/packages/resetmyself/holdon/commonui/images/download.svg?version=1.0.0) ](https://bintray.com/resetmyself/holdon/commonui/1.0.0/link) 
 
-（Android常用控件封装整理集合）.  
+（Android common/base component library - Android常用控件封装整理集合）.  
 # Description
 >主要利用自定义属性、动态创建GradientDrawable等方式进行组合包装  
 
