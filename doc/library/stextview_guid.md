@@ -1,12 +1,23 @@
 # API说明-STextView.java
 # USE 
-> 支持以下属性(不设置就是普通文本框)
+> 支持以下属性(不设置就是普通文本框) - 根据需求，不用全部设置.
 ```Java
 app:s_bg_color="#9e9e9e"        - 背景颜色
 app:s_corner_radius="4dp"       - 圆角半径
 app:s_paddings="10,4,10,4"      - 内容间距
 app:s_stroke_color="#009BFB"    - 边框线颜色
-app:s_stroke_w="1dp"            - 边框线宽度(厚度) 
+app:s_stroke_w="1dp"            - 边框线宽度(厚度)   
+  
+app:s_gradient_angle="180"                  - 渐变-角度
+app:s_gradient_centerx="0.02"               - 渐变-中心x位置
+app:s_gradient_centery="1.0"                - 渐变-中心y位置
+app:s_gradient_endcolor="#28b3ff"           - 渐变-终止颜色
+app:s_gradient_orientation="LEFT_RIGHT"     - 渐变方向
+app:s_gradient_startcolor="#3a91fd"         - 渐变-起始颜色
+app:s_gradient_type="LINEAR_GRADIENT"       - 渐变类型
+  
+app:s_pressed_bg_color="#9e9e9e"        - 按下状态-背景颜色
+app:s_pressed_stroke_bg_color="#777777" - 按下状态-边框颜色
 ```
 # USE 
 a. 圆角、边缘stroke、背景颜色、padding设置文本框
