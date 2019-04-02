@@ -12,5 +12,6 @@
     <color name="line_gray_a">#e4e4e4</color>
     <color name="black">#000000</color>
     <color name="black_a">#515055</color>
+    <color name="red_a">#FF0000</color>
     <color name="line_gray_b">#f6f6f6</color>
 </resources>

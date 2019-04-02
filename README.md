@@ -11,32 +11,36 @@
 
 >起个头,TextView走起(背景、字体颜色、圆角大小、描边stroke宽度和颜色) - 愚人节快乐!  
 
+>增加圆环、渐变、以及按下简单状态设置(可以设置按下边框颜色、背景颜色)  
+
 # Effect  
 >总的效果 
   
 <table border="1">
   <tr>
     <th>文本控件_Rectangle</th>
+    <th>文本控件_增加渐变+按下简单状态</th>
   </tr>
   <tr>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.01_stextview_rectangle.jpg" width="228" height="374" alt="文本控件_Rectangle"/></td>
+    <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.02_stextview_alla.gif" width="228" height="374" alt="文本控件_增加渐变+按下简单状态"/></td>
   </tr>
 </table> 
 
-##### [Demo apk下载](https://github.com/FanChael/CommonUI/blob/master/doc/app-debug.apk)
+##### [Demo apk下载](https://github.com/FanChael/CommonUI/blob/master/doc/commonui.apk)
 
 # Import Library  
 >For gradle:  
 ```Java
 //文本框走起
-implementation 'com.hl:uilibrary:1.0.0'
+implementation 'com.hl:uilibrary:1.0.1'
 ```
 >Or in maven:  
 ```Java
 <dependency>
     <groupId>com.hl</groupId>
     <artifactId>uilibrary</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <type>pom</type>
 </dependency>
 ```
