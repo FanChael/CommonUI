@@ -128,4 +128,4 @@ b. switch设置图片的方式实现 - 如果不设置宽高要保证图片尺�
 ```
 # ATTENTION  
 1.注意如下样式(开关按钮可以设置为非圆形,此时设置s_thumb_special_w的宽度即可)   
-<img src="https://github.com/FanChael/CommonUI/blob/master/doc/switch01.png" width="228" height="374" alt="switch01"/>  
+<img src="https://github.com/FanChael/CommonUI/blob/master/doc/switch01.png" width="400" height="374" alt="switch01"/>  
