@@ -13,6 +13,8 @@
 
 >增加圆环、渐变、以及按下简单状态设置(可以设置按下边框颜色、背景颜色)  
 
+>增加Switch控件(设置属性和资源图片两种方式定义样式，宽高做了一定兼容处理)  
+
 >将会持续完善...  
 
 # Effect  
@@ -22,10 +24,12 @@
   <tr>
     <th>文本控件_Rectangle</th>
     <th>文本控件_增加渐变+按下简单状态</th>
+    <th>Switch控件</th>
   </tr>
   <tr>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.01_stextview_rectangle.jpg" width="228" height="374" alt="文本控件_Rectangle"/></td>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.02_stextview_alla.gif" width="228" height="374" alt="文本控件_增加渐变+按下简单状态"/></td>
+    <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.03_sswitch_alla.gif" width="228" height="374" alt="Switch控件"/></td>
   </tr>
 </table> 
 
@@ -34,21 +38,22 @@
 # Import Library  
 >For gradle:  
 ```Java
-//文本框走起
-implementation 'com.hl:uilibrary:1.0.1'
+//文本框走起+Switch控件
+implementation 'com.hl:uilibrary:1.0.2'
 ```
 >Or in maven:  
 ```Java
 <dependency>
     <groupId>com.hl</groupId>
     <artifactId>uilibrary</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <type>pom</type>
 </dependency>
 ```
 # 传送门  
 > 使用
 * [文本框使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/stextview_guid.md)
+* [Switch控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/sswitch_guid.md)
 
 > Hold on！
 * [更新日志](https://github.com/FanChael/CommonUI/blob/master/doc/library/update_guid.md)
@@ -105,4 +110,29 @@ implementation 'com.hl:uilibrary:1.0.1'
     </declare-styleable>
 </resources>
 ```
+1.1 SSwitch设置属性如下，只能使用其中一种(优先级: 图片 > 属性):  
+```Java
+    <!--开关属性-->
+    <declare-styleable name="sswitch_styleable">
+        <!--通过属性GradientDrawable的形式-->
+        <attr name="s_track_bg_color" format="color"></attr>
+        <attr name="s_track_bg_s_color" format="color"></attr>
+        <attr name="s_track_stroke_color" format="color"></attr>
+        <attr name="s_track_stroke_s_color" format="color"></attr>
+        <attr name="s_track_corner_radius" format="dimension"></attr>
+
+        <attr name="s_thumb_bg_color" format="color"></attr>
+        <attr name="s_thumb_bg_s_color" format="color"></attr>
+        <attr name="s_thumb_stroke_color" format="color"></attr>
+        <attr name="s_thumb_stroke_s_color" format="color"></attr>
+        <attr name="s_thumb_size" format="dimension"></attr>
+
+        <!--图片的形式设置-->
+        <attr name="s_track_drawble" format="reference"></attr>
+        <attr name="s_track_s_drawble" format="reference"></attr>
+        <attr name="s_thumb_drawble" format="reference"></attr>
+        <attr name="s_thumb_s_drawble" format="reference"></attr>
+    </declare-styleable>
+```
+
 2.后续关于GradientDrawable的使用慢慢完善后提出工具类使用，届时对外也提供方法...   

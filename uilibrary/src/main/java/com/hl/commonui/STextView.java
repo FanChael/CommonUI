@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.os.Build;
 import android.util.AttributeSet;
 
 import com.hl.commonui.utils.DensityUtil;
@@ -151,11 +150,7 @@ public class STextView extends android.support.v7.widget.AppCompatTextView {
         }
         stateListDrawable.addState(new int[]{ -pressed }, gd);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            this.setBackground(stateListDrawable);
-        }else{
-            this.setBackgroundDrawable(stateListDrawable);
-        }
+        this.setBackground(stateListDrawable);
         this.setPadding(padding_l, padding_t, padding_r, padding_b);
     }
 

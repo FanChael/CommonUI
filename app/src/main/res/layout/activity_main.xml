@@ -41,6 +41,27 @@
         app:s_stroke_w="1dp" />
 
     <com.hl.commonui.STextView
+        android:id="@+id/am_loginMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="登录哇"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/am_loginTvR"
+        app:layout_constraintTop_toTopOf="parent"
+        app:s_corner_radius="50dp"
+        app:s_gradient_angle="180"
+        app:s_gradient_centerx="0.02"
+        app:s_gradient_centery="1.0"
+        app:s_gradient_endcolor="#3a91fd"
+        app:s_gradient_orientation="LEFT_RIGHT"
+        app:s_gradient_startcolor="#28b3ff"
+        app:s_gradient_type="LINEAR_GRADIENT"
+        app:s_paddings="40,6,40,6" />
+
+    <com.hl.commonui.STextView
         android:id="@+id/am_loginTv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -246,4 +267,96 @@
         app:s_stroke_color="#cccccc"
         app:s_stroke_w="1dp" />
 
+    <!--switch默认大小开关-->
+    <com.hl.commonui.SSwitch
+        android:id="@+id/am_switchSS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@+id/am_loginTv6"
+        app:layout_constraintTop_toBottomOf="@+id/am_loginTv6"
+        app:s_thumb_bg_color="#D5D5D5"
+        app:s_thumb_bg_s_color="#3a91fd"
+        app:s_thumb_stroke_color="#aa91fd"
+        app:s_thumb_stroke_s_color="#FF0000"
+        app:s_track_bg_color="#BEBEBE"
+        app:s_track_bg_s_color="#28b3ff"
+        app:s_track_corner_radius="15dp"
+        app:s_track_stroke_color="#aa91fd"
+        app:s_track_stroke_s_color="#FF0000" />
+
+    <!--switch设置宽高 - 宽度不设置具体值时=高度*2-->
+    <com.hl.commonui.SSwitch
+        android:id="@+id/am_switchSSa"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@+id/am_switchSS"
+        app:layout_constraintTop_toBottomOf="@+id/am_switchSS"
+        app:s_thumb_bg_color="#D5D5D5"
+        app:s_thumb_bg_s_color="#3a91fd"
+        app:s_thumb_stroke_color="#aa91fd"
+        app:s_thumb_stroke_s_color="#FF0000"
+        app:s_track_bg_color="#BEBEBE"
+        app:s_track_bg_s_color="#28b3ff"
+        app:s_track_corner_radius="35dp"
+        app:s_track_stroke_color="#aa91fd"
+        app:s_track_stroke_s_color="#FF0000" />
+
+    <!--switch默认宽度+高度以thumb_size为准-->
+    <com.hl.commonui.SSwitch
+        android:id="@+id/am_switchSSb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@+id/am_switchSSa"
+        app:layout_constraintTop_toBottomOf="@+id/am_switchSSa"
+        app:s_thumb_bg_color="#D5D5D5"
+        app:s_thumb_bg_s_color="#3a91fd"
+        app:s_thumb_size="30dp"
+        app:s_thumb_stroke_color="#aa91fd"
+        app:s_thumb_stroke_s_color="#FF0000"
+        app:s_track_bg_color="#BEBEBE"
+        app:s_track_bg_s_color="#28b3ff"
+        app:s_track_corner_radius="15dp"
+        app:s_track_stroke_color="#aa91fd"
+        app:s_track_stroke_s_color="#FF0000" />
+
+    <!--switch默认宽度+高度以thumb_size为准-->
+    <com.hl.commonui.SSwitch
+        android:id="@+id/am_switchSSb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@+id/am_switchSSb"
+        app:layout_constraintTop_toBottomOf="@+id/am_switchSSb"
+        app:s_thumb_bg_color="#D5D5D5"
+        app:s_thumb_bg_s_color="#3a91fd"
+        app:s_thumb_size="30dp"
+        app:s_thumb_special_w="45dp"
+        app:s_thumb_stroke_color="#aa91fd"
+        app:s_thumb_stroke_s_color="#FF0000"
+        app:s_track_bg_color="#BEBEBE"
+        app:s_track_bg_s_color="#28b3ff"
+        app:s_track_corner_radius="15dp"
+        app:s_track_stroke_color="#aa91fd"
+        app:s_track_stroke_s_color="#FF0000" />
+
+    <!--switch设置图片的方式实现 - 如果不设置宽高要保证图片尺寸哟!-->
+    <com.hl.commonui.SSwitch
+        android:id="@+id/am_switchSSc"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        app:layout_constraintStart_toStartOf="@+id/am_switchSSb2"
+        app:layout_constraintTop_toBottomOf="@+id/am_switchSSb2"
+        app:s_thumb_drawble="@drawable/test"
+        app:s_thumb_s_drawble="@drawable/test"
+        app:s_track_drawble="@drawable/testa"
+        app:s_track_s_drawble="@drawable/testb" />
 </android.support.constraint.ConstraintLayout>

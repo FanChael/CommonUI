@@ -291,3 +291,26 @@ b. 增加圆环、渐变、以及按下简单状态设置(可以设置按下边�
 
 </android.support.constraint.ConstraintLayout>
 ```
+c. 自家的登录按钮
+```Java   
+<com.hl.commonui.STextView
+        android:id="@+id/am_loginMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="登录哇"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/am_loginTvR"
+        app:layout_constraintTop_toTopOf="parent"
+        app:s_corner_radius="50dp"
+        app:s_gradient_angle="180"
+        app:s_gradient_centerx="0.02"
+        app:s_gradient_centery="1.0"
+        app:s_gradient_endcolor="#3a91fd"
+        app:s_gradient_orientation="LEFT_RIGHT"
+        app:s_gradient_startcolor="#28b3ff"
+        app:s_gradient_type="LINEAR_GRADIENT"
+        app:s_paddings="40,6,40,6" />
+```

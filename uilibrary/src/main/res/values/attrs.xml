@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--基本属性-->
     <declare-styleable name="common_styleable">
         <!--声明我们的属性，名称为radius,取值类型为尺寸类型（dp,px等）-->
         <attr name="s_corner_radius" format="dimension"></attr>
@@ -42,5 +43,31 @@
         <!--按下状态颜色 - 内部只做边缘变化处理-->
         <attr name="s_pressed_stroke_bg_color" format="color"></attr>
         <attr name="s_pressed_bg_color" format="color"></attr>
+    </declare-styleable>
+    <!--开关属性-->
+    <declare-styleable name="sswitch_styleable">
+        <!--通过属性GradientDrawable的形式 _s为按下状态-->
+        <!--背景-->
+        <attr name="s_track_bg_color" format="color"></attr>
+        <attr name="s_track_bg_s_color" format="color"></attr>
+        <attr name="s_track_stroke_color" format="color"></attr>
+        <attr name="s_track_stroke_s_color" format="color"></attr>
+        <attr name="s_track_corner_radius" format="dimension"></attr>
+
+        <!--开关-->
+        <attr name="s_thumb_bg_color" format="color"></attr>
+        <attr name="s_thumb_bg_s_color" format="color"></attr>
+        <attr name="s_thumb_stroke_color" format="color"></attr>
+        <attr name="s_thumb_stroke_s_color" format="color"></attr>
+        <attr name="s_thumb_size" format="dimension"></attr>
+
+        <!--设置thumb特殊的宽度-如果设置了这个宽度，则不再是s_thumb_size作为宽度-->
+        <attr name="s_thumb_special_w" format="dimension"></attr>
+
+        <!--图片的形式设置-->
+        <attr name="s_track_drawble" format="reference"></attr>
+        <attr name="s_track_s_drawble" format="reference"></attr>
+        <attr name="s_thumb_drawble" format="reference"></attr>
+        <attr name="s_thumb_s_drawble" format="reference"></attr>
     </declare-styleable>
 </resources>
