@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         override fun onClick(view: View?) {
             Toast.makeText(mcontext, "点我鸭", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         am_counterCircle.start()
         am_counterOval.setCounterCallBack(callBack)
         am_counterOval.start()
+        ///< 取消倒计时
+        //am_counterOval.cancel();
     }
 
     /**

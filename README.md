@@ -15,6 +15,8 @@
 
 >增加Switch控件(设置属性和资源图片两种方式定义样式，宽高做了一定兼容处理)  
 
+>增加倒计时控件(自定义圆形、圆角两种，可设置倒计时总数，是否百分比等属性)  
+
 >将会持续完善...  
 
 # Effect  
@@ -25,11 +27,13 @@
     <th>文本控件_Rectangle</th>
     <th>文本控件_增加渐变+按下简单状态</th>
     <th>Switch控件</th>
+    <th>倒计时控件</th>
   </tr>
   <tr>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.01_stextview_rectangle.jpg" width="228" height="374" alt="文本控件_Rectangle"/></td>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.02_stextview_alla.gif" width="228" height="374" alt="文本控件_增加渐变+按下简单状态"/></td>
     <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.03_sswitch_alla.gif" width="228" height="374" alt="Switch控件"/></td>
+    <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.09_scounter_alla.gif" width="228" height="374" alt="倒计时控件"/></td>
   </tr>
 </table> 
 
@@ -37,6 +41,11 @@
 
 # Import Library  
 >For gradle:  
+```Java
+//文本框走起+Switch控件+倒计时控件
+implementation 'com.hl:uilibrary:1.0.3'
+```
+>History:  
 ```Java
 //文本框走起+Switch控件
 implementation 'com.hl:uilibrary:1.0.2'
@@ -46,7 +55,7 @@ implementation 'com.hl:uilibrary:1.0.2'
 <dependency>
     <groupId>com.hl</groupId>
     <artifactId>uilibrary</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.x</version>
     <type>pom</type>
 </dependency>
 ```
@@ -54,6 +63,7 @@ implementation 'com.hl:uilibrary:1.0.2'
 > 使用
 * [文本框使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/stextview_guid.md)
 * [Switch控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/sswitch_guid.md)
+* [倒计时控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/scounter_guid.md)
 
 > Hold on！
 * [更新日志](https://github.com/FanChael/CommonUI/blob/master/doc/library/update_guid.md)
