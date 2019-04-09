@@ -359,4 +359,37 @@
         app:s_thumb_s_drawble="@drawable/test"
         app:s_track_drawble="@drawable/testa"
         app:s_track_s_drawble="@drawable/testb" />
+
+    <!--圆形倒计时-->
+    <com.hl.commonui.CounterCircleView
+        android:id="@+id/am_counterCircle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toEndOf="@+id/am_switchSSa"
+        app:layout_constraintTop_toBottomOf="@+id/am_loginTv7"
+        app:s_c_b_percent="false"
+        app:s_c_b_showouter="true"
+        app:s_c_counter_number="10"
+        app:s_c_inner_color="#000000"
+        app:s_c_inner_color_alpha="10"
+        app:s_c_out_size="2dp"
+        app:s_c_outer_color="#2773FF"
+        app:s_c_text_color="#334081" />
+
+    <!--圆角倒计时-->
+    <com.hl.commonui.CounterOvalView
+        android:id="@+id/am_counterOval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:text="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/am_switchSSa"
+        app:layout_constraintTop_toBottomOf="@+id/am_counterCircle"
+        app:s_c_corners="80dp"
+        app:s_c_counter_number="10"
+        app:s_c_inner_color="#60333333"
+        app:s_c_prefix="跳过鸭" />
 </android.support.constraint.ConstraintLayout>

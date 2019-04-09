@@ -70,4 +70,32 @@
         <attr name="s_thumb_drawble" format="reference"></attr>
         <attr name="s_thumb_s_drawble" format="reference"></attr>
     </declare-styleable>
+    <!--计时器属性配置-->
+    <declare-styleable name="counterview_styleable">
+        <!--倒计时公共属性-->
+        <!--倒计时总数 - 不是百分比的话一般是10,5这些；百分比的话就是100之类的-->
+        <attr name="s_c_counter_number" format="float"></attr>
+        <!--是否是百分比倒计时-->
+        <attr name="s_c_b_percent" format="boolean"></attr>
+        <!--圆形倒计时 - 内环颜色   圆角倒计时 - 背景颜色，记得带透明度才好看-->
+        <attr name="s_c_inner_color" format="color"></attr>
+
+        <!--圆形倒计时-配置属性-->
+        <!--是否显示外环倒计时-->
+        <attr name="s_c_b_showouter" format="boolean"></attr>
+        <!--外环大小-->
+        <attr name="s_c_out_size" format="dimension"></attr>
+        <!--文本颜色-->
+        <attr name="s_c_text_color" format="color"></attr>
+        <!--内环颜色透明度-->
+        <attr name="s_c_inner_color_alpha" format="integer"></attr>
+        <!--外环颜色-->
+        <attr name="s_c_outer_color" format="color"></attr>
+
+        <!--圆角倒计时-配置属性-非自定义View-->
+        <!--圆角大小-->
+        <attr name="s_c_corners" format="dimension"></attr>
+        <!--文本前缀，比如跳过，内部包装为"跳过(5s)"-->
+        <attr name="s_c_prefix" format="string"></attr>
+    </declare-styleable>
 </resources>
