@@ -43,6 +43,9 @@
         <!--按下状态颜色 - 内部只做边缘变化处理-->
         <attr name="s_pressed_stroke_bg_color" format="color"></attr>
         <attr name="s_pressed_bg_color" format="color"></attr>
+        <!--进度条属性-->
+        <attr name="s_progress_color" format="color"></attr>
+        <attr name="s_progress_h" format="dimension"></attr>
     </declare-styleable>
     <!--开关属性-->
     <declare-styleable name="sswitch_styleable">

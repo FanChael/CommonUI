@@ -1,6 +1,7 @@
 package com.hl.commonuitest
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -43,6 +44,11 @@ class MainActivity : AppCompatActivity() {
         am_counterOval.start()
         ///< 取消倒计时
         //am_counterOval.cancel();
+
+        ///< 跳转到Webview页面
+        am_toWebview.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, WebviewActivity::class.java))
+        })
     }
 
     /**

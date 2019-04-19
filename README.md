@@ -17,6 +17,8 @@
 
 >增加倒计时控件(自定义圆形、圆角两种，可设置倒计时总数，是否百分比等属性)  
 
+>增加扩展WebView(测试了某度和新闻类网站，下载支付基本ok，其他支持陆续完善)    
+
 >将会持续完善...  
 
 # Effect  
@@ -37,16 +39,27 @@
   </tr>
 </table> 
 
+<table border="1">
+  <tr>
+    <th>扩展Webview控件</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/FanChael/CommonUI/blob/master/doc/2019.04.19_swebview.gif" width="228" height="374" alt="扩展Webview控件"/></td>
+  </tr>
+</table> 
+
 ##### [Demo apk下载](https://github.com/FanChael/CommonUI/blob/master/doc/commonui.apk)
 
 # Import Library  
 >For gradle:  
 ```Java
-//文本框走起+Switch控件+倒计时控件
-implementation 'com.hl:uilibrary:1.0.3'
+//文本框走起+Switch控件+倒计时控件+扩展Webview控件
+implementation 'com.hl:uilibrary:1.0.4'
 ```
 >History:  
 ```Java
+//文本框走起+Switch控件+倒计时控件
+implementation 'com.hl:uilibrary:1.0.3'
 //文本框走起+Switch控件
 implementation 'com.hl:uilibrary:1.0.2'
 ```
@@ -64,6 +77,7 @@ implementation 'com.hl:uilibrary:1.0.2'
 * [文本框使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/stextview_guid.md)
 * [Switch控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/sswitch_guid.md)
 * [倒计时控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/scounter_guid.md)
+* [扩展Webview控件使用](https://github.com/FanChael/CommonUI/blob/master/doc/library/swebview_guid.md)
 
 > Hold on！
 * [更新日志](https://github.com/FanChael/CommonUI/blob/master/doc/library/update_guid.md)

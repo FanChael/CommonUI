@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WebviewActivity">
+
+    <!--支持顶部进度条定义 - 不定义则不显示-->
+    <com.hl.commonui.SWebview
+        android:id="@+id/sWebview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:s_bg_color="#009BFB"
+        app:s_corner_radius="1dp"
+        app:s_progress_color="#e4e4e4"
+        app:s_progress_h="4dp" />
+</android.support.constraint.ConstraintLayout>

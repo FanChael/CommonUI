@@ -392,4 +392,22 @@
         app:s_c_counter_number="10"
         app:s_c_inner_color="#60333333"
         app:s_c_prefix="跳过鸭" />
+
+    <!--跳转到WebView页面-->
+    <com.hl.commonui.STextView
+        android:id="@+id/am_toWebview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="跳转到Webview(简单测试了下百度，新闻类网站，下载，支付目前都是可以)"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/am_counterOval"
+        app:layout_constraintTop_toTopOf="@+id/am_counterOval"
+        app:s_bg_color="#9e9e9e"
+        app:s_corner_radius="4dp"
+        app:s_paddings="10,4,10,4"
+        app:s_stroke_color="#009BFB"
+        app:s_stroke_w="1dp" />
 </android.support.constraint.ConstraintLayout>

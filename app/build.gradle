@@ -11,7 +11,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -32,12 +32,12 @@ android {
     }
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            def date = new Date().format("yyyyMMdd" , TimeZone.getTimeZone("GMT+08"))
-            if(variant.buildType.name.equals('debug')){
+            def date = new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08"))
+            if (variant.buildType.name.equals('debug')) {
                 ///"commonui_${date}_${versionName}.apk"
                 outputFileName = "commonui.apk"
             }
-            if(variant.buildType.name.equals('release')){
+            if (variant.buildType.name.equals('release')) {
                 outputFileName = "commonui_${versionName}.apk"
             }
         }
