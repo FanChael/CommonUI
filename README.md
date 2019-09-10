@@ -19,6 +19,8 @@
 
 >增加扩展WebView(测试了某度和新闻类网站，下载支付基本ok，其他支持陆续完善)    
 
+>扩展WebView支持本地文件选择  
+
 >将会持续完善...  
 
 # Effect  
@@ -54,7 +56,7 @@
 >For gradle:  
 ```Java
 //文本框走起+Switch控件+倒计时控件+扩展Webview控件
-implementation 'com.hl:uilibrary:1.0.4'
+implementation 'com.hl:uilibrary:1.0.5'
 ```
 >History:  
 ```Java

@@ -2,6 +2,8 @@ package com.hl.commonui;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -15,7 +17,10 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+import android.webkit.ValueCallback;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
+import android.webkit.WebHistoryItem;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -35,6 +40,12 @@ import com.hl.commonui.utils.WebviewUtil;
  */
 public class SWebview extends WebView {
     private ProgressBar mProgressBar;
+    private LoadCallBack loadListenner;
+
+    // 增加本地文件选择调用
+    private ValueCallback<Uri> mUploadMessage;
+    private ValueCallback<Uri[]> uploadMessageAboveL;
+    private static final int FILE_CHOOSER_RESULT_CODE = 12;
 
     public SWebview(Context context) {
         this(context, null);
@@ -53,14 +64,14 @@ public class SWebview extends WebView {
         super(context, attrs, defStyleAttr, defStyleRes);
         intStyledAttributes(context, attrs);
         WebviewUtil.initWebView(this, null, null,
-                new MyWebChromClient(), new MyWebClient(context));
+                new MyWebChromClient(context), new MyWebClient(context));
     }
 
     public SWebview(Context context, AttributeSet attrs, int defStyleAttr, boolean privateBrowsing) {
         super(context, attrs, defStyleAttr, privateBrowsing);
         intStyledAttributes(context, attrs);
         WebviewUtil.initWebView(this, null, null,
-                new MyWebChromClient(), new MyWebClient(context));
+                new MyWebChromClient(context), new MyWebClient(context));
     }
 
     /**
@@ -79,7 +90,8 @@ public class SWebview extends WebView {
 
     /**
      * 开启缩放 - 默认是不允许缩放
-     @param bHideControlTool - 支持缩放的同时是否显示缩放控件
+     *
+     * @param bHideControlTool - 支持缩放的同时是否显示缩放控件
      */
     public void enableZoom(boolean bHideControlTool) {
         WebSettings settings = this.getSettings();
@@ -124,6 +136,15 @@ public class SWebview extends WebView {
         this.loadDataWithBaseURL(null, hmtlData, "text/html", "utf-8", null);
     }
 
+    /**
+     * 设置加载监听回调
+     *
+     * @param _loadListenner
+     */
+    public void setLoadListenner(LoadCallBack _loadListenner) {
+        this.loadListenner = _loadListenner;
+    }
+
     /*
      *@Description: WebViewClient
      *@Author: hl
@@ -148,6 +169,10 @@ public class SWebview extends WebView {
             //            //view.loadUrl(url);
             //            //return true;
             //            return false;
+            // 自定义加载回调 - 如果回调返回true，就不再执行后面的操作
+            if (null != loadListenner && loadListenner.shouldOverrideUrlLoading(view, url)){
+                return true;
+            }
 
             ///< 拦截支付宝支付
             if (url.startsWith("alipays://platformapi/startApp?") ||
@@ -192,7 +217,7 @@ public class SWebview extends WebView {
                 Uri uri = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 mContext.startActivity(intent);
-            }else if (url.endsWith(".apk")) { ///<  && url.contains(".apk")
+            } else if (url.endsWith(".apk")) { ///<  && url.contains(".apk")
                 Uri uri = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 mContext.startActivity(intent);
@@ -204,12 +229,20 @@ public class SWebview extends WebView {
 
         @Override
         public void onPageFinished(WebView view, String url) {
+            // 加载结束回调
+            if (null != loadListenner){
+                loadListenner.onPageFinished(view, url);
+            }
             super.onPageFinished(view, url);
         }
 
         @Override
         public void onReceivedError(WebView view, int errorCode,
                                     String description, String failingUrl) {
+            // 加载错误回调
+            if (null != loadListenner){
+                loadListenner.onReceivedError(view, errorCode, description, failingUrl);
+            }
             ///< 加载错误的时候会回调，在其中可做错误处理，比如再请求加载一次，或者提示404的错误页面
             super.onReceivedError(view, errorCode, description, failingUrl);
         }
@@ -228,6 +261,20 @@ public class SWebview extends WebView {
      *@Time: 2019/4/19 11:49
      */
     private class MyWebChromClient extends WebChromeClient {
+        private Context mContext;
+
+        public MyWebChromClient(Context _context) {
+            this.mContext = _context;
+        }
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+            if (null != loadListenner){
+                loadListenner.onReceivedTitle(view, getWebTitle());
+            }
+        }
+
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             super.onProgressChanged(view, newProgress);
@@ -256,6 +303,89 @@ public class SWebview extends WebView {
         //                    //return true;  ///< 这个会导致卡死!
         //                    return false;
         //                }
+
+        // For Android 3.0+
+        public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+            mUploadMessage = uploadMsg;
+            openFileChooserActivity(mContext);
+        }
+
+        // For Android 3.0+
+        public void openFileChooser(ValueCallback uploadMsg, String acceptType) {
+            mUploadMessage = uploadMsg;
+            openFileChooserActivity(mContext);
+        }
+
+        // For Android 4.1
+        public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+            mUploadMessage = uploadMsg;
+            openFileChooserActivity(mContext);
+        }
+
+        // For Android >= 5.0
+        @Override
+        public boolean onShowFileChooser(WebView webView,
+                                         ValueCallback<Uri[]> filePathCallback,
+                                         FileChooserParams fileChooserParams) {
+            uploadMessageAboveL = filePathCallback;
+            openFileChooserActivity(mContext);
+            return true;
+        }
+    }
+
+    /**
+     * 打开本地文件/相册修改为i.setType("image/*");
+     */
+    private void openFileChooserActivity(Context context) {
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType("*/*");
+        if (context instanceof Activity){
+            ((Activity)context).startActivityForResult(Intent.createChooser(i, "File Chooser"), FILE_CHOOSER_RESULT_CODE);
+        }
+    }
+
+    /**
+     * 界面的onActivityResult需要调用这个方法处理选择的文件
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == FILE_CHOOSER_RESULT_CODE) {
+            if (null == mUploadMessage && null == uploadMessageAboveL) return;
+            Uri result = data == null || resultCode != -1/*RESULT_OK*/ ? null : data.getData();
+            if (uploadMessageAboveL != null) {
+                onActivityResultAboveL(requestCode, resultCode, data);
+            } else if (mUploadMessage != null) {
+                mUploadMessage.onReceiveValue(result);
+                mUploadMessage = null;
+            }
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void onActivityResultAboveL(int requestCode, int resultCode, Intent intent) {
+        if (requestCode != FILE_CHOOSER_RESULT_CODE || uploadMessageAboveL == null)
+            return;
+        Uri[] results = null;
+        if (resultCode == Activity.RESULT_OK) {
+            if (intent != null) {
+                String dataString = intent.getDataString();
+                ClipData clipData = intent.getClipData();
+                if (clipData != null) {
+                    results = new Uri[clipData.getItemCount()];
+                    for (int i = 0; i < clipData.getItemCount(); i++) {
+                        ClipData.Item item = clipData.getItemAt(i);
+                        results[i] = item.getUri();
+                    }
+                }
+                if (dataString != null)
+                    results = new Uri[]{Uri.parse(dataString)};
+            }
+        }
+        uploadMessageAboveL.onReceiveValue(results);
+        uploadMessageAboveL = null;
     }
 
     /**
@@ -267,7 +397,7 @@ public class SWebview extends WebView {
      * @param pColor
      * @param bgColor
      */
-    public void setTopProgressBar(Context context, int proh, int proRadius, int pColor, int bgColor) {
+    private void setTopProgressBar(Context context, int proh, int proRadius, int pColor, int bgColor) {
         mProgressBar = new ProgressBar(context, null,
                 android.R.attr.progressBarStyleHorizontal);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -311,5 +441,30 @@ public class SWebview extends WebView {
         if (-1 != pro_p_color && -1 != pro_bg_color) {
             setTopProgressBar(context, proH, proRadius, pro_bg_color, pro_p_color);
         }
+    }
+
+    /**
+     * 正确获取Webview的标题
+     * @return
+     */
+    public String getWebTitle(){
+        WebBackForwardList forwardList = this.copyBackForwardList();
+        WebHistoryItem item = forwardList.getCurrentItem();
+        if (item != null) {
+            return item.getTitle();
+        }
+        return null;
+    }
+
+    /**
+     * 加载回调
+     */
+    public interface LoadCallBack {
+        boolean shouldOverrideUrlLoading(WebView view, String url);
+        void onReceivedError(WebView view, int errorCode,
+                             String description, String failingUrl);
+        void onPageFinished(WebView view, String url);
+
+        void onReceivedTitle(WebView view, String title);
     }
 }

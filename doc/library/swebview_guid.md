@@ -8,6 +8,21 @@
         <attr name="s_bg_color" format="color"></attr>
         <attr name="s_progress_color" format="color"></attr>
 ```
+> 加载监听回调
+```Java
+/**
+     * 加载回调
+     */
+    public interface LoadCallBack {
+        // false -> 不拦截   true -> 拦截网页内的点击跳转
+        boolean shouldOverrideUrlLoading(WebView view, String url);
+        void onReceivedError(WebView view, int errorCode,
+                             String description, String failingUrl);
+        void onPageFinished(WebView view, String url);
+
+        void onReceivedTitle(WebView view, String title);
+    }
+```
 # USE 
 a. 通过属性主要是设置顶部进度条的样式
 ```Java   
@@ -46,15 +61,43 @@ a. 通过属性主要是设置顶部进度条的样式
      */
     public void setHtml(String hmtlData) {
     }
+    
+    /**
+     * 设置加载监听回调
+     *
+     * @param _loadListenner
+     */
+    public void setLoadListenner(LoadCallBack _loadListenner) {
+    }      
 ```
 
-# USE - 代码控制是否显示Webview缩放控件以及加载数据
+# USE - 代码控制是否显示Webview缩放控件以及加载数据+设置监听回调(回调可以获取网页title)
 ```Java 
          SWebview sWebview = findViewById(R.id.sWebview);
          sWebview.enableZoom(false);
          //sWebview.setUrl("https://www.baidu.com");
          sWebview.setUrl("https://www.lieyunwang.com");
          //sWebview.loadUrl("file:///android_asset/js_java_interaction.html");
+         sWebview.setLoadListenner(new SWebview.LoadCallBack() {
+                     @Override
+                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                         return false;   // 表示不拦截
+                         // return true; // 拦截网页内的点击跳转
+                         // if (url.contains("lywselflink=1")){return false;} //特定的链接允许跳转
+                     }
+         
+                     @Override
+                     public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                     }
+         
+                     @Override
+                     public void onPageFinished(WebView view, String url) {
+                     }
+         
+                     @Override
+                     public void onReceivedTitle(WebView view, String title) {
+                     }
+                 });
 ```
 
 # ATTENTION  
@@ -78,4 +121,13 @@ a. 通过属性主要是设置顶部进度条的样式
          }
          return super.onKeyDown(keyCode, event);
      }
+```
+2.如果要支持选择本地文件并进行处理，需要在onActivityResult中添加如下设置:
+```Java
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 处理文件选择回调事件 - 不添加，则不会处理选择的文件
+        sWebview.onActivityResult(requestCode, resultCode, data);
+    }
 ```
